@@ -26,10 +26,3 @@ jobs:
       # Install java as it is required for the next step
       - name: 'Installing java'
         run: sudo apt-get install openjdk-8-jdk
-      # VARIABLES ENTORNO
-      - name: 'Variables'
-        env:
-          CONSUMER_KEY: ${{secrets.CONSUMER_KEY_PROD}}
-      # Authenticate to org using the URL stored in the text file
-      - name: 'Authenticate to Integration Org'
-        run: sfdx force:auth:jwt:grant --clientid $CONSUMER_KEY --jwtkeyfile ./keys/cicd.key --username jeissonhernandez@playful-shark-eyl510.com --setalias sfdxcideploy --instanceurl https://login.salesforce.com/
