@@ -7,6 +7,7 @@
 * No.   Date        Author                  Description
 * ---   -----       -------                 ---------------------------------------------------------
 * 1.0   05-25-2020  Jeisson Hernandez(JH)   Class creation
+* 2.0   05-25-2020  Jeisson Hernandez(JH)   New comment
 */
 public with sharing class AvailableProductsController 
 {
