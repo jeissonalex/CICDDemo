@@ -12,6 +12,7 @@
 * 4.0   05-25-2020  Jeisson Hernandez(JH)   New comment JAHG
 * 5.0   05-25-2020  Jeisson Hernandez(JH)   New comment JAHG
 * 6.0   05-25-2020  Jeisson Hernandez(JH)   New comment JAHG
+* 7.0   05-25-2020  Jeisson Hernandez(JH)   New comment JAHG
 */
 public with sharing class AvailableProductsController 
 {
