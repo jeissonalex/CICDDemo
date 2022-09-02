@@ -1,10 +1,8 @@
 name: GitHub Actions Demo
 on:
     push:
-      branches: [ main ]
       paths:
         - 'force-app/**'
-     
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -46,6 +44,11 @@ jobs:
     # Authenticate to org using the URL stored in the text file
       - name: 'Authenticate to Integration Org'
         run: sfdx force:auth:jwt:grant --clientid ${{secrets.CONSUMER_KEY_PROD}} --jwtkeyfile ./keys/cicd.key --username $USERNAME --setalias sfdxcideploy --instanceurl $URLORG
-  # EXPORT
+    # EXPORT
       - name: 'Export'
         run: export
+    # Create Delta Package        
+      - name: 'Create delta packages for new, modified or deleted metadata'
+        run: | 
+              mkdir changed-sources
+              sfdx sgd:source:delta --to main --from $GITHUB_SHA --output changed-sources/ --generate-delta --source force-app/ 
