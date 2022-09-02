@@ -74,6 +74,10 @@ jobs:
             # Install java as it is required for the next step
             - name: 'Installing java'
               run: sudo apt-get install openjdk-8-jdk
+            
+            # Install SFDX scanner
+            - name: 'Installing SFDX scanner'
+              run: sfdx plugins:install @salesforce/sfdx-scanner              
 
             # Authenticate to org using the URL stored in the text file
             - name: 'Authenticate to Integration Org'
@@ -86,6 +90,18 @@ jobs:
               run: | 
                   mkdir changed-sources
                   sfdx sgd:source:delta --to "HEAD" --from "HEAD^" --output changed-sources/ --generate-delta --source force-app/ 
+
+            - name: 'Scan code'
+              run: |
+                  cd changed-sources
+                  sfdx scanner:run --format sarif --target './**/*.cls' --pmdconfig "PMDRules\PMDRules.xml" --outfile 'apexScanResults.sarif'  
+                  cd ..
+
+          # Now we upload the .sarif file as explained in the previous step
+            - name: Upload SARIF file
+              uses: github/codeql-action/upload-sarif@v1
+              with:
+                sarif_file: changed-sources/apexScanResults.sarif
 
             # Run all tests
             - name: 'Check-only deploy delta changes - run all tests'
