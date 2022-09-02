@@ -9,5 +9,6 @@ public with sharing class ClassDevelop1
         System.debug('New Message4');
         System.debug('New Message5');
         System.debug('New Message6');
+        System.debug('New Message7');
     }
 }
