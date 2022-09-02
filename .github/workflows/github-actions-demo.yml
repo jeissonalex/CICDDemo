@@ -57,4 +57,6 @@ jobs:
       - name: 'Create delta packages for new, modified or deleted metadata'
         run: | 
               mkdir changed-sources
-              sfdx sgd:source:delta --to 'origin/main' --from $GITHUB_SHA --output .
+              sfdx sgd:source:delta --to 'origin/main' --from $GITHUB_SHA --output changed-sources/ --generate-delta --source force-app/
+              cd changed-sources
+              ls changed-sources
