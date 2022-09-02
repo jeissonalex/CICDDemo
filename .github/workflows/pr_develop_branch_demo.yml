@@ -28,6 +28,9 @@ jobs:
         # In this case, we are going to run our commands on the latest version
         # of ubuntu
         runs-on: ubuntu-latest
+        env: 
+          USERNAME: jeissonhernandez@playful-shark-eyl510.com
+          URLORG: https://login.salesforce.com
         if: ${{ github.actor != 'dependabot[bot]' }}
         steps:
             # Now we install nodejs in the VM, and specify version 14
