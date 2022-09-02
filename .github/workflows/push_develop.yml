@@ -3,19 +3,20 @@ name: Deploy integration branch to integration and staging/uat orgs
 
 # Definition when the workflow should run
 on:
-    push:
-      branches: [ develop ]
-      paths:
-        - 'force-app/**'          
+        pull_request:
+            branches: [ develop ]
+            types: [ closed ]      
+            paths:
+                - 'force-app/**'          
 
 # Jobs to be executed
 jobs:
     deploy-branch-to-int-and-staging-orgs:
+        if: github.event.pull_request.merged == true    
         runs-on: ubuntu-latest
         env: 
           USERNAME: jeissonhernandez@playful-shark-eyl510.com
           URLORG: https://login.salesforce.com
-        if: ${{ github.actor != 'dependabot[bot]' }}
         steps:
             # Install Salesforce CLI
             - name: 'Install Salesforce CLI'
