@@ -5,18 +5,19 @@ name: Deploy integration branch to integration and staging/uat orgs
 on:
         pull_request:
             branches: [ develop ]
-            types: [ closed ]      
             paths:
                 - 'force-app/**'          
 
 # Jobs to be executed
 jobs:
     deploy-branch-to-int-and-staging-orgs:
-        if: github.event.pull_request.merged == true    
+        
         runs-on: ubuntu-latest
         env: 
           USERNAME: jeissonhernandez@playful-shark-eyl510.com
           URLORG: https://login.salesforce.com
+                echo "🎉 The job was automatically triggered by a ${{ github.event.pull_request.merged }} event."
+        if: github.event.pull_request.merged == true              
         steps:
             # Install Salesforce CLI
             - name: 'Install Salesforce CLI'
