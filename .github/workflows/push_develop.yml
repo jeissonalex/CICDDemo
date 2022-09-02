@@ -3,11 +3,11 @@ name: Deploy integration branch to integration and staging/uat orgs
 
 # Definition when the workflow should run
 on:
-        pull_request:
-            branches: [ develop ]
-            paths:
-                - 'force-app/**'          
-
+    push:
+      branches: [ develop ]
+      paths:
+        - 'force-app/**'
+        
 # Jobs to be executed
 jobs:
     deploy-branch-to-int-and-staging-orgs:
@@ -16,8 +16,6 @@ jobs:
         env: 
           USERNAME: jeissonhernandez@playful-shark-eyl510.com
           URLORG: https://login.salesforce.com
-                echo "🎉 The job was automatically triggered by a ${{ github.event.pull_request.merged }} event."
-        if: github.event.pull_request.merged == true              
         steps:
             # Install Salesforce CLI
             - name: 'Install Salesforce CLI'
