@@ -39,7 +39,7 @@ jobs:
             with:
               version: '6.40.0'
               sourcePath: 'force-app/main/default/classes/'
-              rulesets: 'PMDRules\PMDRules.xml'
+              rulesets: 'PMDRules/PMDRules.xml'
               analyzeModifiedFilesOnly: true
               
           - name: Upload SARIF file
