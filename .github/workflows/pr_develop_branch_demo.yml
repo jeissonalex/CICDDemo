@@ -114,7 +114,7 @@ jobs:
               uses: pmd/pmd-github-action@v1
               id: pmd
               with:
-                  sourcePath: 'changed-sources/force-app/main/default/classes/*.cls'
+                  sourcePath: 'changed-sources/force-app/main/default/classes/'
                   rulesets: 'PMDRules\PMDRules.xml'
 
             # Check for PMD violations
