@@ -48,5 +48,8 @@ jobs:
                  sarif_file: pmd-report.sarif
                  
           - name: Fail build if there are violations
-            run: |
-                if [[ ${{ steps.pmd.outputs.violations }} != 0 ]]; then echo "There is violations!" exit 1; else exit 0; fi
+            if: steps.pmd.outputs.violations != 0
+            uses: actions/github-script@v3
+            with:
+                script: |
+                    core.setFailed('There are violatons')
