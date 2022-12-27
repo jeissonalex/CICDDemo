@@ -107,14 +107,14 @@ jobs:
             # Show changes Files 
             - name: 'Show Changed Files'
               run: | 
-                  ls -lh changed-sources
+                  ls -lh changed-sources/force-app/main/default/classes/*.cls
 
             # Run PMD scan
             - name: 'Run PMD scan 2'
               uses: pmd/pmd-github-action@v1
               id: pmd
               with:
-                  sourcePath: 'changed-sources'
+                  sourcePath: 'changed-sources/force-app/main/default/classes/*.cls'
                   rulesets: 'PMDRules\PMDRules.xml'
 
             # Check for PMD violations
