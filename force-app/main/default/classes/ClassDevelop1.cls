@@ -23,5 +23,6 @@ public with sharing class ClassDevelop1
         System.debug('New Message18'); 
         System.debug('New Message19'); //Only this class changed
         System.debug('New Message19'); //Only this class changed V2
+        System.debug('New Message19'); //Only this class changed V3
     }
 }
