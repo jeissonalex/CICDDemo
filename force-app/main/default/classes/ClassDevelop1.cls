@@ -17,5 +17,6 @@ public with sharing class ClassDevelop1
     public static void sendMessage()
     {
         System.debug(LoggingLevel.DEBUG,'New Message');
+        System.debug(LoggingLevel.DEBUG,'New Message2');
     }
 }
