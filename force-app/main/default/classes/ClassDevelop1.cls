@@ -18,6 +18,5 @@ public with sharing class ClassDevelop1
     {
         System.debug(LoggingLevel.DEBUG,'New Message');
         System.debug(LoggingLevel.DEBUG,'New Message2');
-        System.assertEquals(1, 1, 'ERROR :) ');
     }
 }
