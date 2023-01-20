@@ -46,6 +46,8 @@ jobs:
           mkdir changed-sources
 
           sfdx sgd:source:delta --to "HEAD" --from "HEAD^" --output changed-sources/ --generate-delta --source force-app/ 
+          
+          ls -lh changed-sources
       - name: Deployment - run specified tests
         if: ${{ env.APEX_TESTS != 'all' }}
         run: >
