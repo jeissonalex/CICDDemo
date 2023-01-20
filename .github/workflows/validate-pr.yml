@@ -1,4 +1,4 @@
-name: Validate PR
+name: Check Pull Request
 on:
   pull_request:
     types:
@@ -8,10 +8,11 @@ on:
       - force-app/**
     branches:
       - develop
+# Job to check PMD Rules
 jobs:
   pmd_job:
     runs-on: ubuntu-latest
-    name: PMD job
+    name: Check PMD Rules
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -43,10 +44,11 @@ jobs:
       with:
          script: |
                  core.setFailed('There are ' + ${{steps.pmd.outputs.violations}} + ' violations to PMD Rules, please fix them')
-
+  # Job to Prevalidate components Next Org
   validate-pr:
     needs:  [pmd_job]
     runs-on: ubuntu-latest
+    name: Prevalidate components Next Org
     if: ${{ github.actor != 'dependabot[bot]' }}
     steps:
       - uses: actions/setup-node@v3
