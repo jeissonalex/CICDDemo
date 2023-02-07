@@ -115,8 +115,11 @@ jobs:
 
           sfdx force:source:deploy -p "changed-sources/force-app" --checkonly --testlevel RunSpecifiedTests --runtests ${{env.APEX_TESTS}} --json
       - name: Deployment - run all tests
-        if: ${{ env.APEX_TESTS == 'all' }} && [ -d "/home/runner/work/CICDDemo/CICDDemo/changed-sources/force-app1/" ]
+        if: ${{ env.APEX_TESTS == 'all' }}
         run: >
           echo ${{env.APEX_TESTS}}
-
-          sfdx force:source:deploy -p "changed-sources/force-app" --checkonly --testlevel RunLocalTests --json
+          DIR="/home/runner/work/CICDDemo/CICDDemo/changed-sources/force-app1/"
+          if [ -d "$DIR" ]; then
+            sfdx force:source:deploy -p "changed-sources/force-app" --checkonly --testlevel RunLocalTests --json
+            echo "Prevalidationg SFDC files in ${DIR}..."
+          fi          
