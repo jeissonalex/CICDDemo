@@ -117,7 +117,7 @@ jobs:
       - name: Deployment - run all tests
         if: ${{ env.APEX_TESTS == 'all' }}
         run: |
-          DIR=/home/runner/work/CICDDemo/CICDDemo/changed-sources/force-app1/
+          DIR=changed-sources/force-app/
           echo ${{env.APEX_TESTS}}          
           if test -d "$DIR"; then
             echo "DIR exists"
