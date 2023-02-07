@@ -116,10 +116,10 @@ jobs:
           sfdx force:source:deploy -p "changed-sources/force-app" --checkonly --testlevel RunSpecifiedTests --runtests ${{env.APEX_TESTS}} --json
       - name: Deployment - run all tests
         if: ${{ env.APEX_TESTS == 'all' }}
-        run: >
-          echo ${{env.APEX_TESTS}}
-          DIR="/home/runner/work/CICDDemo/CICDDemo/changed-sources/force-app/"
-          if test -f "$DIR"; then
+        run: |
+          DIR=/home/runner/work/CICDDemo/CICDDemo/changed-sources/force-app/
+          echo ${{env.APEX_TESTS}}          
+          if test -d "$DIR"; then
             echo "DIR exists"
             sfdx force:source:deploy -p "changed-sources/force-app" --checkonly --testlevel RunLocalTests --json
           fi          
