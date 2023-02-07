@@ -14,6 +14,7 @@ private class ClassDevelop1Test
         system.debug(LoggingLevel.DEBUG, 'hello7');
         system.debug(LoggingLevel.DEBUG, 'hello8');
         system.debug(LoggingLevel.DEBUG, 'hello9');
+        system.debug(LoggingLevel.DEBUG, 'hello10');
         System.assertEquals(1, 1, 'ERROR :) ');
     }
 }
