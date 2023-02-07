@@ -86,8 +86,10 @@ jobs:
           sfdx sgd:source:delta --to "HEAD" --from "HEAD^" --output changed-sources/ --generate-delta --source force-app/ 
       - name: Listing Changed Sources
         run: >
-          ls -R changed-sources
-          pwd
+          ls -R changed-sources          
+      - name: Show Current Path
+        run: >
+          pwd          
       - name: Read PR Body
         env:
           PR_BODY: ${{github.event.pull_request.body}}
