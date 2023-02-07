@@ -6,6 +6,7 @@ private class ClassDevelop1Test
     {
         ClassDevelop1.sendMessage();
         system.debug(LoggingLevel.DEBUG, 'hello');
+        system.debug(LoggingLevel.DEBUG, 'hello2');
         System.assertEquals(1, 1, 'ERROR :) ');
     }
 }
