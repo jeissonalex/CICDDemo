@@ -119,7 +119,7 @@ jobs:
         run: >
           echo ${{env.APEX_TESTS}}
           DIR="/home/runner/work/CICDDemo/CICDDemo/changed-sources/force-app/"
-          if [ -d "$DIR" ]; then
+          if test -f "$DIR"; then
+            echo "DIR exists"
             sfdx force:source:deploy -p "changed-sources/force-app" --checkonly --testlevel RunLocalTests --json
-            echo "Prevalidationg SFDC files in ${DIR}..."
           fi          
