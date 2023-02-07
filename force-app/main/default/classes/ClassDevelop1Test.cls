@@ -5,6 +5,7 @@ private class ClassDevelop1Test
     static void method1()
     {
         ClassDevelop1.sendMessage();
+        system.debug(LoggingLevel.DEBUG, 'hello');
         System.assertEquals(1, 1, 'ERROR :) ');
     }
 }
