@@ -90,9 +90,9 @@ jobs:
       - name: Show Current Path
         run: >
           pwd
-      - name: Show Listing
+      - name: Verify Path
         run: >
-          ls -R          
+          [ -d "/home/runner/work/CICDDemo/CICDDemo/changed-sources/force-app/" ] && echo "Directory exists"
       - name: Read PR Body
         env:
           PR_BODY: ${{github.event.pull_request.body}}
