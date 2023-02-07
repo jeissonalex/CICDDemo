@@ -89,7 +89,10 @@ jobs:
           ls -R changed-sources          
       - name: Show Current Path
         run: >
-          pwd          
+          pwd
+      - name: Show Listing
+        run: >
+          ls -R          
       - name: Read PR Body
         env:
           PR_BODY: ${{github.event.pull_request.body}}
